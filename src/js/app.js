@@ -2,7 +2,7 @@ App = {
   web3Provider: null,
   contracts: {},
   names: new Array(),
-  url: 'http://127.0.0.1:9545',
+  url: 'http://127.0.0.1:8545',
   chairPerson:null,
   currentAccount:null,
   init: function() {
@@ -94,7 +94,7 @@ App = {
       voteInstance = instance;
       return voteInstance.register(addr);
     }).then( function(result){
-      if(result.receipt.status == '0x01')
+      if(result.receipt.status == '0x1')
         alert(addr + " is registered successfully")
       else
         alert(addr + " account registeration failed due to revert")
@@ -116,7 +116,7 @@ App = {
 
         return voteInstance.vote(proposalId, {from: account});
       }).then(function(result){
-            if(result.receipt.status == '0x01')
+            if(result.receipt.status == '0x1')
             alert(account + " voting done successfully")
             else
             alert(account + " voting not done successfully due to revert")
